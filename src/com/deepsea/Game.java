@@ -68,6 +68,8 @@ public class Game {
 		game.initOpenGL();
 		game.initDisplay();
 		game.loadFonts();
+		
+		camera.create();
 	}
 
 	private void loadFonts() {
@@ -139,12 +141,15 @@ public class Game {
 	private void update() {
 
 		dT = getTime();
+		input.mapKeys();
+		input.mapMouse();
+		//world.update();
 	}
 
 	private void render() {
 
 		this.clearScreen();
-		
+		camera.apply();
 	}
 	
 }
