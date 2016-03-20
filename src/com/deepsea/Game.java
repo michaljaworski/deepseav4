@@ -17,7 +17,7 @@ public class Game {
 	static int xwidth = 800, xheight = 600;
 	static int framerate = 60;
 	static boolean fullscreen = false;
-	static boolean debug = false;
+	static int debug = 1;
 	static float mouseSensitivity = 0.05f;
 	static float xfov = 75.0f;
 	
@@ -41,7 +41,13 @@ public class Game {
 		/*
 		 * Game entry point
 		 */
+		
+		System.out.println("Starting game");
+		
 		game = new Game();
+		game.initOpenGL();
+		game.initDisplay();
+		game.loadFonts();
 		camera = new Camera();
 		input = new Input();
 		
@@ -61,14 +67,10 @@ public class Game {
 		System.exit(0);
 	}
 	
-	private Game() throws LWJGLException {
+	public Game() throws LWJGLException {
 		/*
 		 * Set up basic game system
 		 */
-		game.initOpenGL();
-		game.initDisplay();
-		game.loadFonts();
-		
 		camera.create();
 	}
 

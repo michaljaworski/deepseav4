@@ -43,7 +43,7 @@ public class Input {
 		mS.middle = Mouse.isButtonDown(2);
 		mS.right = Mouse.isButtonDown(1);
 
-		if(Game.debug) {
+		if(Game.debug == 1) {
 			if(mS.left) {
 				System.out.println("Left");
 			}
@@ -57,7 +57,7 @@ public class Input {
 	}
 	
 	public void writeKeys() {
-		if(Game.debug) {
+		if(Game.debug == 2) {
 			System.out.println("a" + toChar(keys[Keyboard.KEY_A]) +
 				"b" + toChar(keys[Keyboard.KEY_B]) +
 				"c" + toChar(keys[Keyboard.KEY_C]) +
