@@ -21,7 +21,7 @@ public class Game {
 	static float mouseSensitivity = 0.05f;
 	static float xfov = 75.0f;
 	
-	//fps caluclations
+	//frame rate calculations
 	double time, lastTime;
 	static float dt, dT;
 	
@@ -48,8 +48,6 @@ public class Game {
 		game.initOpenGL();
 		game.initDisplay();
 		game.loadFonts();
-		camera = new Camera();
-		input = new Input();
 		
 		while(!Display.isCloseRequested() && !Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)){
 			/*
@@ -71,7 +69,8 @@ public class Game {
 		/*
 		 * Set up basic game system
 		 */
-		camera.create();
+		camera = new Camera(0, 0, 0);
+		input = new Input();
 	}
 
 	private void loadFonts() {
@@ -146,12 +145,14 @@ public class Game {
 		input.mapKeys();
 		input.mapMouse();
 		//world.update();
+		camera.update(dT);
 	}
 
 	private void render() {
 
 		this.clearScreen();
-		camera.apply();
+		
+		camera.translatePostion();
 	}
 	
 }

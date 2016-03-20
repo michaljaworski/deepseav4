@@ -9,7 +9,7 @@
 	<classpathentry kind="lib" path="includes/lwjgl_util.jar"/>
 	<classpathentry kind="lib" path="includes/lwjgl.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="deepsea_engine_v4/includes/native"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="deepseav4/includes/native"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="includes/slick.jar"/>
