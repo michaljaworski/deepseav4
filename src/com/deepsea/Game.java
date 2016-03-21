@@ -1,6 +1,7 @@
 package com.deepsea;
 
 import java.awt.Font;
+import java.util.Random;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
@@ -29,6 +30,7 @@ public class Game {
 	static Game game;
 	static Camera camera;
 	static Input input;
+	static Scene world;
 	
 	//strings
 	static String title = "deepsea engine";
@@ -37,10 +39,17 @@ public class Game {
 	//fonts
 	TrueTypeFont font;
 	
+	//world variables
+	static int random_seed;
+	
 	public static void main(String[] args) throws LWJGLException {
 		/*
 		 * Game entry point
 		 */
+		
+		System.out.println("Generating random seed");
+		Random ran = new Random();
+		random_seed = ran.nextInt(65535) + 1;
 		
 		System.out.println("Starting game");
 		
@@ -61,6 +70,7 @@ public class Game {
 		/*
 		 * Game exit point
 		 */
+		world.destroy();
 		Display.destroy();
 		System.exit(0);
 	}
@@ -69,6 +79,7 @@ public class Game {
 		/*
 		 * Set up basic game system
 		 */
+		world = new Scene(random_seed);
 		camera = new Camera(0, 0, 0);
 		input = new Input();
 	}
