@@ -1,5 +1,7 @@
 package com.deepsea;
 
+import java.util.logging.Level;
+
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
@@ -25,6 +27,7 @@ public class Camera {
 		rotation = new Vector3f();
 		originVec = position;
 		Mouse.setGrabbed(true);
+		Game.LOG.log(Level.INFO, "player initialized: " + position);
 	}
 	
 	public void update(float delta){

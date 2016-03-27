@@ -45,7 +45,7 @@ public class Game {
 	TrueTypeFont font;
 	
 	//logging
-	private static Logger LOG = Logger.getLogger("Game");
+	public static Logger LOG = Logger.getLogger("Game");
 	
 	//world variables
 	static int random_seed;
@@ -55,11 +55,15 @@ public class Game {
 		 * Game entry point
 		 */
 		
+		loadLogger();
+		
 		System.out.println("Generating random seed");
 		Random ran = new Random();
 		random_seed = ran.nextInt(65535) + 1;
+		LOG.log(Level.INFO, "generating random seed: " + random_seed);
 		
 		System.out.println("Starting game");
+		LOG.log(Level.INFO, "starting game");
 		
 		game = new Game();
 		game.initOpenGL();
@@ -90,8 +94,9 @@ public class Game {
 		world = new Scene(random_seed);
 		camera = new Camera(0, 0, 0);
 		input = new Input();
-		
-		//logging to file
+	}
+	
+	private static void loadLogger() {
 		FileHandler fh;
 		try {
 			fh = new FileHandler("./log.txt");
@@ -112,6 +117,7 @@ public class Game {
 		 */
 		Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
 		font = new TrueTypeFont(awtFont, false);
+		LOG.log(Level.INFO, "loaded font: " + awtFont.getFontName());
 	}
 
 	private void initDisplay() {
@@ -135,6 +141,8 @@ public class Game {
 		//these below allow alpha blending
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		GL11.glAlphaFunc(GL11.GL_GREATER, 0);
+		
+		LOG.log(Level.INFO, "display initialized");
 	}
 
 	private void initOpenGL() throws LWJGLException {
@@ -150,6 +158,8 @@ public class Game {
 		Display.setVSyncEnabled(false);
 		Display.setFullscreen(fullscreen);
 		Display.create();
+		
+		LOG.log(Level.INFO, "Display: " + title + " " + version);
 	}
 	
 	public void clearScreen() {

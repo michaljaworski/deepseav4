@@ -1,5 +1,7 @@
 package com.deepsea;
 
+import java.util.logging.Level;
+
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
@@ -23,6 +25,7 @@ public class Input {
 
 	public Input() {
 		mS = new MouseState();
+		Game.LOG.log(Level.INFO, "input initialized");
 	}
 	
 	public void mapKeys(){
