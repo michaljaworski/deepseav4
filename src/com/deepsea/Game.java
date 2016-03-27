@@ -1,7 +1,12 @@
 package com.deepsea;
 
 import java.awt.Font;
+import java.io.IOException;
 import java.util.Random;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
@@ -38,6 +43,9 @@ public class Game {
 	
 	//fonts
 	TrueTypeFont font;
+	
+	//logging
+	private static Logger LOG = Logger.getLogger("Game");
 	
 	//world variables
 	static int random_seed;
@@ -82,6 +90,20 @@ public class Game {
 		world = new Scene(random_seed);
 		camera = new Camera(0, 0, 0);
 		input = new Input();
+		
+		//logging to file
+		FileHandler fh;
+		try {
+			fh = new FileHandler("./log.txt");
+			LOG.addHandler(fh);
+			SimpleFormatter formatter = new SimpleFormatter();
+			fh.setFormatter(formatter);
+			LOG.info("entry point");
+		} catch (SecurityException se) {
+			se.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
 	}
 
 	private void loadFonts() {
@@ -163,7 +185,7 @@ public class Game {
 
 		this.clearScreen();
 		
-		camera.translatePostion();
+		camera.translatePosition();
 	}
 	
 }

@@ -1,0 +1,2 @@
+Mar 27, 2016 10:11:10 PM com.deepsea.Game <init>
+INFO: entry point

@@ -78,7 +78,7 @@ public class Camera {
 
 	}
 	
-	public void translatePostion() {
+	public void translatePosition() {
 		//This is the code that changes 3D perspective to the camera's perspective.
 		GL11.glRotatef(rotation.x, 1, 0, 0);
 		GL11.glRotatef(rotation.y, 0, 1, 0);
@@ -96,6 +96,7 @@ public class Camera {
 		this.position.x = originVec.x;
 		this.position.y = originVec.y;
 		this.position.z = originVec.z;
+		translatePosition();
 		updatePrevious();
 	}
 	
